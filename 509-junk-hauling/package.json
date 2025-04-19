@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
- "scripts": {
-  "start": "node server/index.js",
-  "dev": "nodemon server/index.js",
-  "test": "echo \"Error: no test specified\" && exit 1"
-},
+  "scripts": {
+    "start": "react-scripts start",
+    "dev": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,7 +15,8 @@
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
     "mongoose": "^8.13.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
