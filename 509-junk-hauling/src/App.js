@@ -1,11 +1,17 @@
 import './App.css';
-import HomePage from './pages/home/HomePage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/home'; // Cleaner import
+import RatesAndDates from './pages/rates-and-dates'; // Updated import
 
 function App() {
   return (
-    <div className="App">
-      <HomePage />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/ratesanddates" element={<RatesAndDates />} />
+        <Route path="/rates-and-dates" element={<RatesAndDates />} />
+      </Routes>
+    </Router>
   );
 }
 
