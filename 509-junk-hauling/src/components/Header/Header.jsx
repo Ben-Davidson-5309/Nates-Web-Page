@@ -8,13 +8,15 @@ function Header() {
       <Container>
         <Navbar.Brand as={Link} to="/">
           <img
-            src="/path-to-your-image/logo.png" // Replace with your image path
+            src="/junk-hauling-logo.png" 
             alt="Logo"
-            width="30"
-            height="30"
+            width="60"
+            height="55"
             className="d-inline-block align-top"
           />{" "}
-          Nate's Junk Hauling
+          <span className="text-color">
+          509 Junk Hauling
+          </span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
