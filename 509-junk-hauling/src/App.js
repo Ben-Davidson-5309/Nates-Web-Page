@@ -1,4 +1,5 @@
 import Header from ".//components/Header/Header";
+import Footer from ".//components/Footer/Footer";
 import "./App.css";
 import "./styles/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/rates-and-dates" element={<RatesAndDates />} />
         <Route path="/rentatrailer" element={<RentATrailer />} /> {/* New route */}
       </Routes>
+      <Footer /> {/* Add Footer component */}
     </Router>
   );
 }

@@ -1,39 +1,40 @@
-import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./Header.css"; // Ensure you copy the CSS into this file
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <Navbar bg="primary" variant="dark" expand="lg">
-      <Container>
-        <Navbar.Brand as={Link} to="/">
-          <img
-            src="/junk-hauling-logo.png" 
-            alt="Logo"
-            width="60"
-            height="55"
-            className="d-inline-block align-top"
-          />{" "}
-          <span className="text-color">
-          509 Junk Hauling
-          </span>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">
-              Home
-            </Nav.Link>
-            <Nav.Link as={Link} to="/ratesanddates">
-              Rates and Dates
-            </Nav.Link>
-            <Nav.Link as={Link} to="/rentatrailer">
-              Rent a Trailer
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <header>
+      <nav className="navbar">
+        <div className="logo">
+          <Link to="/">
+            <img
+              src="/junk-hauling-logo.png"
+              alt="Logo"
+              width="60"
+              height="60"
+            />
+          </Link>
+        </div>
+        <div className="hamburger-menu" onClick={toggleMenu}>
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
+        </div>
+        <div className={`nav-menu ${menuOpen ? "" : "hide"}`}>
+          <Link to="/ratesanddates">Rates and Dates</Link>
+          <Link to="/rentatrailer">Rent a Trailer</Link>
+          <Link to="/about">About Us</Link>
+          <Link to="/contact">Contact Info</Link>
+        </div>
+      </nav>
+    </header>
   );
 }
 
