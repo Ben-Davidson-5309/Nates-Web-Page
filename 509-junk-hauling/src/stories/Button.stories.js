@@ -47,10 +47,3 @@ export const Small = {
     label: 'Button',
   },
 };
-
-export const Components = {
-  args:{
-    primary:false,
-    label:"Button"
-  }
-};
