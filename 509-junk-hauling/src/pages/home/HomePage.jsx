@@ -1,13 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
 
 const HomePage = () => {
   return (
     <div>
-      <h1>Welcome to Our Junk Hauling Service</h1>
-      <p>We provide the best junk hauling services in town!</p>
-      <Link to="/ratesanddates">View Rates and Dates</Link> {/* Add the link */}
-      <Link to="/rates-and-dates">View Rates and Dates</Link> {/* Add the link */}
+      <div>
+        <h1 className="text-center">Welcome to 509 Junk Hauling</h1>
+      </div>
+      <div>
+        <h2>Your trusted junk removal service</h2>
+        <p>We provide fast and reliable junk removal services for your home or business.</p>
+      </div>
     </div>
   );
 };
