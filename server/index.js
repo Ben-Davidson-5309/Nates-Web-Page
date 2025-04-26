@@ -2,14 +2,15 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
 
-// Serve static files from the React app's build folder
-app.use(express.static(path.join(__dirname, '../509-junk-hauling/build')));
+// Set EJS as the templating engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "src/views")); // Correctly set the views directory
 
-// Catch-all route to serve the React app's index.html file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../509-junk-hauling/build/index.html'));
+// Route to render the EJS template
+app.get('/ejs-sample', (req, res) => {
+  res.render('index', { title: "Welcome to Nate's Web Page", message: "This is a sample EJS page!" });
 });
 
 // Start the server

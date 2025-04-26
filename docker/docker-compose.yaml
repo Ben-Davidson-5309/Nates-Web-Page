@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  react-app:
+    build:
+      context: ../509-junk-hauling
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80" # Maps port 80 in the container to port 3000 on the host
+    volumes:
+      - ../509-junk-hauling:/app # Mounts the local folder for development
+      - /app/node_modules # Prevents overwriting node_modules in the container
+    stdin_open: true
+    tty: true
+
+  server:
+    build:
+      context: ../server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000" # Maps port 5000 in the container to port 5000 on the host
+    volumes:
+      - ../server:/server # Mounts the local folder for development
+      - /server/node_modules # Prevents overwriting node_modules in the container
+    stdin_open: true
+    tty: true
