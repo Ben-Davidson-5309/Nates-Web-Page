@@ -1,0 +1,26 @@
+/* filepath: c:\Users\15098\OneDrive\NatesWebPage\Nates-Web-Page\509-junk-hauling\src\pages\rates-and-dates\RatesAndDates.css */
+.rates-and-dates {
+  text-align: center;
+  padding: 20px;
+}
+
+.calendar-controls {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adds spacing between the dropdowns */
+}
+
+.calendar-controls label {
+  margin: 0;
+}
+
+.react-calendar {
+  margin: 0 auto; /* Centers the calendar */
+  width: 100%; /* Ensures the calendar is responsive */
+  max-width: 500px; /* Sets a maximum width for better layout */
+  background-color: #fff; /* Adds a background color */
+  border: 1px solid #ccc; /* Adds a border for better visibility */
+  border-radius: 8px; /* Rounds the corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
