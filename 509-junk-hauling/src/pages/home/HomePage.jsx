@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <div className="container mt-5">
       <div>
-        <h1 className="text-center mb-4">Hauling Junk In 509</h1>
+        <h1 className="text-center mb-4">Hauling Junk  509</h1>
       </div>
       <div className="row">
         {/* Rates and Dates Section */}
