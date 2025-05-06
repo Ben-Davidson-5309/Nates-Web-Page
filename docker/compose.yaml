@@ -1,25 +1,31 @@
 version: "3.8"
+
 services:
   react-app:
     build:
       context: ../509-junk-hauling
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     ports:
-      - "3000:80" # Maps port 80 in the container to port 3000 on the host
+      - "3000:3000"
     volumes:
-      - ../509-junk-hauling:/app # Mounts the local folder for development
-      - /app/node_modules # Prevents overwriting node_modules in the container
+      - ../509-junk-hauling:/app
+      - /app/node_modules # Ensure the container's node_modules are used
     stdin_open: true
     tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: npm start  # Ensure React starts when the container is up
 
   server:
     build:
       context: ../server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     ports:
-      - "5000:5000" # Maps port 5000 in the container to port 5000 on the host
+      - "5000:5000"
     volumes:
-      - ../server:/server # Mounts the local folder for development
-      - /server/node_modules # Prevents overwriting node_modules in the container
+      - ../server:/server
+      - /server/node_modules  # Ensure server's node_modules are handled similarly
+    working_dir: /server
+    command: npm run dev
     stdin_open: true
     tty: true
