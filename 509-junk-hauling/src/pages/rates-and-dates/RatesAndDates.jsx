@@ -3,7 +3,7 @@ import Calendar from "../../components/Calendar/Calendar"; // Import the Calenda
 import "./RatesAndDates.css";
 import { useNavigate } from "react-router-dom";
 
-function RatesAndDates() {
+export const RatesAndDates = () => {
   const [date, setDate] = useState(new Date());
   const [month, setMonth] = useState(date.getMonth());
   const [year, setYear] = useState(date.getFullYear());
@@ -61,4 +61,4 @@ function RatesAndDates() {
   );
 }
 
-export default RatesAndDates;
+

@@ -1,32 +1,58 @@
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import "./App.css";
-import "./styles/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import HomePage from "./pages/home";
-import RatesAndDates from "./pages/rates-and-dates";
-import RentATrailer from "./pages/rentAtrailer/RentATrailer";
-import FormPage from "./pages/form/FormPage"; // Import the form page
+import yaml from "js-yaml";
+import { useEffect, useState } from "react";
 
-function App() {
+// Import your components
+import HomePage from "./pages/home/HomePage";
+import RatesAndDates from "./pages/rates-and-dates/RatesAndDates";
+import RentATrailer from "./pages/rentAtrailer/RentATrailer";
+import AboutPage from "./pages/about/AboutPage";
+import ContactPage from "./pages/contact/ContactPage";
+
+// Map component names from routes.yaml to actual React components
+const componentMap = {
+  HomePage,
+  RatesAndDates,
+  RentATrailer,
+  AboutPage,
+  ContactPage,
+};
+
+const App = () => {
+  const [routes, setRoutes] = useState([]);
+
+  useEffect(() => {
+    const fetchRoutes = async () => {
+      try {
+        const response = await fetch("/routes.yaml");
+        if (!response.ok) {
+          throw new Error(`Failed to fetch routes.yaml: ${response.statusText}`);
+        }
+        const yamlText = await response.text();
+        const parsedYaml = yaml.load(yamlText);
+        setRoutes(parsedYaml.routes);
+      } catch (error) {
+        console.error("Error loading routes:", error);
+      }
+    };
+    fetchRoutes();
+  }, []);
+
   return (
-    <div className="app-background">
-      {" "}
-      {/* Wrapper div for background */}
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/ratesanddates" element={<RatesAndDates />} />
-          <Route path="/rates-and-dates" element={<RatesAndDates />} />
-          <Route path="/rentatrailer" element={<RentATrailer />} />
-          <Route path="/form" element={<FormPage />} /> {/* Add this */}
-        </Routes>
-        <Footer />
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        {routes.map((route, index) => {
+          const Component = componentMap[route.component];
+          if (!Component) {
+            console.error(`Component "${route.component}" not found in componentMap.`);
+            return null;
+          }
+          return <Route key={index} path={route.path} element={<Component />} />;
+        })}
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

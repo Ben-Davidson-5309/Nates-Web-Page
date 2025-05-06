@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RentATrailer = () => {
+export const RentATrailer = () => {
   return (
     <div>
       <h1>Rent a Trailer</h1>
@@ -8,5 +8,3 @@ const RentATrailer = () => {
     </div>
   );
 };
-
-export default RentATrailer;

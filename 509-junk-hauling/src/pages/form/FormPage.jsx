@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-function FormPage() {
+export const FormPage = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const selectedDate = queryParams.get("date");
@@ -175,4 +175,3 @@ function FormPage() {
   );
 }
 
-export default FormPage;

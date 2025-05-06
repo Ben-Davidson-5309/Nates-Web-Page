@@ -10,7 +10,9 @@ app.set("views", path.join(__dirname, "src/views")); // Correctly set the views 
 
 // Route to render the EJS template
 app.get('/ejs-sample', (req, res) => {
-  res.render('index', { title: "Welcome to Nate's Web Page", message: "This is a sample EJS page!" });
+  res.render('index', { 
+    title: "Welcome to Nate's Web Page", 
+    message: "This is a sample EJS page!" });
 });
 
 // Start the server

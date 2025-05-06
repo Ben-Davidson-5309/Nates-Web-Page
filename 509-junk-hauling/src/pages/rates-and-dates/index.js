@@ -1,3 +1,0 @@
-import RatesAndDates from './RatesAndDates'; 
-
-export default RatesAndDates;
