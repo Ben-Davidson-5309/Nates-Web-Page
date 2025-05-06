@@ -1,5 +1,5 @@
 import React from "react";
-import HomeCard from "../../components/HomeCard";
+import HomeCard from "../../components/HomeCard/HomeCard";
 
 const routes = [
   { path: "/", component: "HomePage" },
@@ -9,7 +9,7 @@ const routes = [
   { path: "/contact", component: "ContactPage" },
 ];
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <div className="container mt-5">
       <div>
@@ -44,3 +44,5 @@ export const HomePage = () => {
     </div>
   );
 };
+
+export default HomePage;

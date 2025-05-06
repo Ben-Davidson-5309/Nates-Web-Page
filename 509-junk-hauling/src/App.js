@@ -2,13 +2,14 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import yaml from "js-yaml";
 import { useEffect, useState } from "react";
-
-// Import your components
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/Header/Header";  
+import Footer from "./components/Footer/Footer"; 
 import HomePage from "./pages/home/HomePage";
 import RatesAndDates from "./pages/rates-and-dates/RatesAndDates";
 import RentATrailer from "./pages/rentAtrailer/RentATrailer";
-import AboutPage from "./pages/about/AboutPage";
-import ContactPage from "./pages/contact/ContactPage";
+import AboutPage from "./pages/aboutPage/AboutPage"
+import ContactPage from "./pages/contactPage/ContactPage";
 
 // Map component names from routes.yaml to actual React components
 const componentMap = {
@@ -41,6 +42,8 @@ const App = () => {
 
   return (
     <Router>
+      <Header />
+      <main>
       <Routes>
         {routes.map((route, index) => {
           const Component = componentMap[route.component];
@@ -51,6 +54,8 @@ const App = () => {
           return <Route key={index} path={route.path} element={<Component />} />;
         })}
       </Routes>
+    </main>
+    <Footer />
     </Router>
   );
 };
