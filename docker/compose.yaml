@@ -1,5 +1,4 @@
 version: "3.8"
-
 services:
   react-app:
     build:
@@ -9,12 +8,15 @@ services:
       - "3000:3000"
     volumes:
       - ../509-junk-hauling:/app
-      - /app/node_modules # Ensure the container's node_modules are used
-    stdin_open: true
-    tty: true
+      # anonymous volume for node_modules so host’s node_modules
+      # (or lack thereof) doesn’t clobber the container install
+      - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
-    command: npm start  # Ensure React starts when the container is up
+      - FAST_REFRESH=false          # ← disable react-refresh
+    stdin_open: true
+    tty: true
+    command: npm start
 
   server:
     build:
@@ -24,8 +26,10 @@ services:
       - "5000:5000"
     volumes:
       - ../server:/server
-      - /server/node_modules  # Ensure server's node_modules are handled similarly
+      - /server/node_modules
     working_dir: /server
-    command: npm run dev
+    environment:
+      - NODE_ENV=development
     stdin_open: true
     tty: true
+    command: npm run dev
