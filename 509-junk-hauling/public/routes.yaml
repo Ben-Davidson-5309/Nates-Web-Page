@@ -9,3 +9,5 @@ routes:
     component: "AboutPage"
   - path: "/contact"
     component: "ContactPage"
+  - path: "/form"
+    component: "FormPage"
