@@ -1,4 +1,4 @@
-version: "3.8"
+# Remove version line (obsolete in modern Docker)
 services:
   react-app:
     build:
@@ -8,12 +8,11 @@ services:
       - "3000:3000"
     volumes:
       - ../509-junk-hauling:/app
-      # anonymous volume for node_modules so host’s node_modules
-      # (or lack thereof) doesn’t clobber the container install
-      - /app/node_modules
+      - /app/node_modules  # ← CORRECTED to anonymous volume (remove colon and host path)
     environment:
+      - FAST_REFRESH=false # Disable Fast Refresh
       - CHOKIDAR_USEPOLLING=true
-      - FAST_REFRESH=false          # ← disable react-refresh
+      - WATCHPACK_POLLING=true
     stdin_open: true
     tty: true
     command: npm start
@@ -26,7 +25,7 @@ services:
       - "5000:5000"
     volumes:
       - ../server:/server
-      - /server/node_modules
+      - /server/node_modules  # ← CORRECTED to anonymous volume
     working_dir: /server
     environment:
       - NODE_ENV=development

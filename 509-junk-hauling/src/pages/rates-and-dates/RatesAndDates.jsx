@@ -13,6 +13,7 @@ const RatesAndDates = () => {
     setDate(selectedDate);
     // Navigate to the form page with the selected date
     navigate(`/form?date=${selectedDate.toISOString().split("T")[0]}`);
+    console.log("Navigating to:", `/form?date=${selectedDate.toISOString().split("T")[0]}`);
   };
 
   const handleMonthChange = (event) => {
