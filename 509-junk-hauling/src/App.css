@@ -28,6 +28,14 @@
   color: #61dafb;
 }
 
+.app-background {
+  background-color: #73a17633; /* Off-tan color */
+  min-height: 100vh; /* Ensures it covers the full viewport height */
+  width: 100%; /* Ensures it spans the full width */
+  display: flex; /* Optional: Helps with layout alignment */
+  flex-direction: column; /* Optional: Aligns children vertically */
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

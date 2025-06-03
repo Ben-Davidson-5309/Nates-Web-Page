@@ -1,0 +1,5 @@
+/* Change text color to green for Header title */
+.text-color {
+    color: green;
+    font-weight: bold;
+}

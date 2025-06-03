@@ -1,0 +1,3 @@
+import {FamilyAboutSection} from "./FamilyAboutSection";
+
+export default FamilyAboutSection;

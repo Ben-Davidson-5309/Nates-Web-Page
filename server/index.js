@@ -1,16 +1,32 @@
+require('dotenv').config(); // Loads variables from .env
+
 const express = require('express');
 const path = require('path');
+const connectDB = require('./src/config/db'); // Import your DB connection
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 5000;
 
-// Serve static files from the React app's build folder
-app.use(express.static(path.join(__dirname, '../509-junk-hauling/build')));
+// Connect to MongoDB Atlas
+connectDB();
 
-// Catch-all route to serve the React app's index.html file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../509-junk-hauling/build/index.html'));
+// Middleware to parse JSON and urlencoded data
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// Set EJS as the templating engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "src/views"));
+
+// Route to render the EJS template
+app.get('/ejs-sample', (req, res) => {
+  res.render('index', { 
+    title: "Welcome to Nate's Web Page", 
+    message: "This is a sample EJS page!"
+  });
 });
+
+// TODO: Add API routes here when controllers are ready
 
 // Start the server
 app.listen(PORT, () => {
