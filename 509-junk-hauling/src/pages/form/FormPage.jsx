@@ -27,7 +27,23 @@ export const FormPage = () => {
               Selected Date: {formattedDate}
             </span>
           </p>
-          <form>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const form = e.target;
+              const params = new URLSearchParams({
+                date: selectedDate,
+                name: form.name.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                address: form.address.value,
+                state: form.state.value,
+                zip: form.zip.value,
+                notes: form.notes.value,
+              });
+              navigate(`/confirmation?${params.toString()}`);
+            }}
+          >
             <div className="row g-4">
               {/* Personal Info */}
               <div className="col-md-6">
@@ -173,10 +189,10 @@ export const FormPage = () => {
               </div>
             </div>
             <div className="text-center mt-4">
-              <button 
-              type="submit" 
-              className="btn btn-primary btn-lg px-5 shadow"
-              onClick={() => navigate("/confirmation")}>
+              <button
+                type="submit"
+                className="btn btn-primary btn-lg px-5 shadow"
+              >
                 Submit Booking
               </button>
               <button
