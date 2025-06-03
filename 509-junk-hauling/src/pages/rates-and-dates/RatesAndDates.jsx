@@ -1,117 +1,94 @@
-import React, { useState } from "react";
-import Calendar from "../../components/Calendar/Calendar";
-import "./RatesAndDates.css";
-import { useNavigate } from "react-router-dom";
-import { Modal, Button, Form } from "react-bootstrap";
+// RatesAndDates.jsx
+import React, { useState } from 'react'
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css'  // base styles (we override most below)
+import './RatesAndDates.css'
 
 const RatesAndDates = () => {
-  const [date, setDate] = useState(new Date());
-  const [month, setMonth] = useState(date.getMonth());
-  const [year, setYear] = useState(date.getFullYear());
-  const [showModal, setShowModal] = useState(false);
-  const [eventTitle, setEventTitle] = useState("");
-  const [eventDate, setEventDate] = useState("");
-  const [reservedDates] = useState([
-    { date: "2025-06-10" },
-    { date: "2025-06-15" },
-    // Add more reserved dates as needed
-  ]);
-  const navigate = useNavigate();
+  const monthNames = [
+    'January','February','March','April','May','June',
+    'July','August','September','October','November','December'
+  ]
+  const currentYear = new Date().getFullYear()
+  const years = Array.from({length: 11}, (_, i) => currentYear + i)  // e.g. 2025–2035
 
-  const handleDateChange = (selectedDate) => {
-    const iso = selectedDate.toISOString().split("T")[0];
-    const isReserved = reservedDates.find((r) => r.date === iso);
-    if (isReserved) {
-      alert("This date is already reserved.");
-      return;
-    }
+  const [activeDate, setActiveDate] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState(new Date())
 
-    setDate(selectedDate);
-    setEventDate(iso);
-    setShowModal(true);
-  };
+  const handleMonthChange = (e) => {
+    const newMonth = parseInt(e.target.value, 10)
+    const next = new Date(activeDate)
+    next.setMonth(newMonth)
+    setActiveDate(next)
+  }
 
-  const handleMonthChange = (event) => {
-    const newMonth = parseInt(event.target.value, 10);
-    setMonth(newMonth);
-    setDate(new Date(year, newMonth, 1));
-  };
+  const handleYearChange = (e) => {
+    const newYear = parseInt(e.target.value, 10)
+    const next = new Date(activeDate)
+    next.setFullYear(newYear)
+    setActiveDate(next)
+  }
 
-  const handleYearChange = (event) => {
-    const newYear = parseInt(event.target.value, 10);
-    setYear(newYear);
-    setDate(new Date(newYear, month, 1));
-  };
+  const onActiveStartDateChange = ({ activeStartDate }) => {
+    setActiveDate(activeStartDate)
+  }
 
-  const handleModalSave = () => {
-    console.log("Reserved event:", eventTitle, eventDate);
-    setShowModal(false);
-    navigate(`/form?date=${eventDate}`);
-  };
+  const onSelectDate = (date) => {
+    setSelectedDate(date)
+    setActiveDate(date)
+  }
 
   return (
     <div className="rates-and-dates">
-      <h1>Rates and Dates</h1>
+      <h1
+        className="text-center mb-2 display-2 fw-bold"
+        style={{ color: "#157347", fontFamily: "'Quicksand', Arial, sans-serif" }}
+      >
+        Dates and Rates
+      </h1>
+      <h5
+        className="text-center mb-4 display-5"
+        style={{ color: "#157347", fontFamily: "'Quicksand', Arial, sans-serif" }}
+      >
+        Please select a date to reserve
+      </h5>
+
       <div className="calendar-controls">
-        <label className="form-label me-5">
+        <label>
           Month:
-          <select className="form-select" value={month} onChange={handleMonthChange}>
-            {Array.from({ length: 12 }, (_, ctr) => (
-              <option key={ctr} value={ctr}>
-                {new Date(0, ctr).toLocaleString("default", { month: "long" })}
-              </option>
+          <select
+            value={activeDate.getMonth()}
+            onChange={handleMonthChange}
+          >
+            {monthNames.map((m, i) => (
+              <option key={i} value={i}>{m}</option>
             ))}
           </select>
         </label>
-        <label className="form-label">
+
+        <label>
           Year:
-          <select className="form-select" value={year} onChange={handleYearChange}>
-            {Array.from({ length: 10 }, (_, ctr) => (
-              <option key={ctr} value={year - 5 + ctr}>
-                {year - 5 + ctr}
-              </option>
+          <select
+            value={activeDate.getFullYear()}
+            onChange={handleYearChange}
+          >
+            {years.map((y) => (
+              <option key={y} value={y}>{y}</option>
             ))}
           </select>
         </label>
       </div>
-      <Calendar
-        date={date}
-        onDateChange={handleDateChange}
-        activeStartDate={new Date(year, month, 1)}
-      />
 
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Reserve a Date</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="eventTitle">
-              <Form.Label>Full Name:</Form.Label>
-              <Form.Control
-                type="text"
-                value={eventTitle}
-                onChange={(e) => setEventTitle(e.target.value)}
-                placeholder="John Doe"
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="eventDate">
-              <Form.Label>Selected Date</Form.Label>
-              <Form.Control type="text" value={eventDate} disabled />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="outline-secondary" onClick={() => setShowModal(false)}>
-            Cancel
-          </Button>
-          <Button variant="success" onClick={handleModalSave}>
-            Reserve
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <div className="calendar-component">
+        <Calendar
+          onChange={onSelectDate}
+          value={selectedDate}
+          activeStartDate={activeDate}
+          onActiveStartDateChange={onActiveStartDateChange}
+        />
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default RatesAndDates;
+export default RatesAndDates

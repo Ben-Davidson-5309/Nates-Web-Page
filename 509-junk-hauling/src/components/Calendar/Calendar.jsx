@@ -1,6 +1,6 @@
-import React from "react";
 import ReactCalendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import './Calendar.css';
+
 
 export const Calendar = ({ date = new Date(), onDateChange, activeStartDate }) => {
   return (

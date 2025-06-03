@@ -1,0 +1,39 @@
+.home-card {
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f9fdf9;
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensures card fills the column width */
+  max-width: 100%; /* Prevents overflow */
+}
+
+.home-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.home-card .card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2f4f4f;
+}
+
+.home-card .card-text {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.home-card .btn {
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+}
+
+.home-card .card-body {
+  flex: 1 1 auto;         /* Fills available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100px; /* Ensures all card bodies are at least this tall */
+}

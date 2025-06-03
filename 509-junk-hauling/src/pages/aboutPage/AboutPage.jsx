@@ -1,10 +1,15 @@
-import React from "react";
+import FamilyAboutSection from "../../components/AboutFamily/FamilyAboutSection";
 
 const AboutPage = () => {
   return (
-    <div>
-      <h1>About Us</h1>
-      <p>We are committed to providing top-notch junk hauling services.</p>
+    <div className="container py-5">
+      <h1
+        className="mb-4 text-center display-2 fw-bold"
+        style={{ color: "#157347", fontFamily: "'Quicksand', Arial, sans-serif" }}
+      >
+        About Our Family Business
+      </h1>
+      <FamilyAboutSection />
     </div>
   );
 };

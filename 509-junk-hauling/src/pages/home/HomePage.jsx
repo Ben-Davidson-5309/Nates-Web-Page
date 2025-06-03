@@ -13,7 +13,18 @@ const HomePage = () => {
   return (
     <div className="container mt-5">
       <div>
-        <h1 className="text-center mb-4">Hauling Junk 509</h1>
+        <h1
+          className="text-center mb-2 display-2 fw-bold"
+          style={{ color: "#157347", fontFamily: "'Quicksand', Arial, sans-serif" }}
+        >
+          509 Junk Hauling
+        </h1>
+        <h4
+          className="text-center mb-4 display-5"
+          style={{ color: "#157347", fontFamily: "'Quicksand', Arial, sans-serif" }}
+        >
+          You call we Haul
+        </h4>
       </div>
       <div className="row">
         <HomeCard

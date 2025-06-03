@@ -1,13 +1,28 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./Header.css"; // Ensure you copy the CSS into this file
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import "./Header.css";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen(prev => !prev);
+
+  // Close menu when route changes (like on link click)
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
+
+  // Auto close if resizing to desktop view
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <header>

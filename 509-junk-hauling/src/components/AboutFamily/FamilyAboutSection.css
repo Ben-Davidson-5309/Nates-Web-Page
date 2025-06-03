@@ -1,0 +1,13 @@
+.about-highlight {
+  background: #fff;
+  border: 2px solid #157347;
+  border-radius: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  color: #157347;
+  font-family: 'Quicksand', Arial, sans-serif;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* slightly stronger shadow */
+  font-weight: 500;
+  opacity: 1; /* Ensures full opacity */
+}

@@ -12,6 +12,8 @@ import AboutPage from "./pages/aboutPage/AboutPage"
 import ContactPage from "./pages/contactPage/ContactPage";
 import {FormPage} from "./pages/form/FormPage";
 import ConfirmationPage from "./pages/confirmation/ConfirmationPage";
+import FadedBackground from "./components/BackgroundImage/FadedBackground";
+
 // Map component names from routes.yaml to actual React components
 const componentMap = {
   HomePage,
@@ -45,6 +47,7 @@ const App = () => {
 
   return (
     <Router>
+      <FadedBackground />
       <Header />
       <main>
       <Routes>
