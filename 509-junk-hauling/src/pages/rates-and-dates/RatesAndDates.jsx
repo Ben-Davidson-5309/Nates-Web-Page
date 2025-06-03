@@ -32,9 +32,9 @@ const RatesAndDates = () => {
     <div className="rates-and-dates">
       <h1>Rates and Dates</h1>
       <div className="calendar-controls">
-        <label>
+        <label className="form-label me-5">
           Month:
-          <select value={month} onChange={handleMonthChange}>
+          <select className="form-select" value={month} onChange={handleMonthChange}>
             {Array.from({ length: 12 }, (_, ctr) => (
               <option key={ctr} value={ctr}>
                 {new Date(0, ctr).toLocaleString("default", { month: "long" })}
@@ -42,9 +42,9 @@ const RatesAndDates = () => {
             ))}
           </select>
         </label>
-        <label>
+        <label className="form-label">
           Year:
-          <select value={year} onChange={handleYearChange}>
+          <select className="form-select" value={year} onChange={handleYearChange}>
             {Array.from({ length: 10 }, (_, ctr) => (
               <option key={ctr} value={year - 5 + ctr}>
                 {year - 5 + ctr}
