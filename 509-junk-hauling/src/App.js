@@ -10,7 +10,8 @@ import RatesAndDates from "./pages/rates-and-dates/RatesAndDates";
 import RentATrailer from "./pages/rentAtrailer/RentATrailer";
 import AboutPage from "./pages/aboutPage/AboutPage"
 import ContactPage from "./pages/contactPage/ContactPage";
-import {FormPage} from "./pages/form/FormPage"
+import {FormPage} from "./pages/form/FormPage";
+import ConfirmationPage from "./pages/confirmation/ConfirmationPage";
 // Map component names from routes.yaml to actual React components
 const componentMap = {
   HomePage,
@@ -18,7 +19,8 @@ const componentMap = {
   RentATrailer,
   AboutPage,
   ContactPage,
-  FormPage
+  FormPage,
+  ConfirmationPage,
 };
 
 const App = () => {

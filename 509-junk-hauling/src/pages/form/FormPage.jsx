@@ -173,7 +173,10 @@ export const FormPage = () => {
               </div>
             </div>
             <div className="text-center mt-4">
-              <button type="submit" className="btn btn-primary btn-lg px-5 shadow">
+              <button 
+              type="submit" 
+              className="btn btn-primary btn-lg px-5 shadow"
+              onClick={() => navigate("/confirmation")}>
                 Submit Booking
               </button>
               <button

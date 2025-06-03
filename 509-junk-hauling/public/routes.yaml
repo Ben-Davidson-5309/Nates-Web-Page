@@ -11,3 +11,5 @@ routes:
     component: "ContactPage"
   - path: "/form"
     component: "FormPage"
+  - path: "/confirmation"
+    component: "ConfirmationPage"
