@@ -1,10 +1,19 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-
+import { useLocation, useNavigate } from "react-router-dom"; // <-- updated import
+import "bootstrap/dist/css/bootstrap.min.css";
 export const FormPage = () => {
   const location = useLocation();
+  const navigate = useNavigate(); // <-- add this
   const queryParams = new URLSearchParams(location.search);
   const selectedDate = queryParams.get("date");
+
+  // Format the date as MM/DD/YYYY if it exists
+  const formattedDate = selectedDate
+    ? new Date(selectedDate).toLocaleDateString("en-US", {
+        month: "2-digit",
+        day: "2-digit",
+        year: "numeric",
+      })
+    : "Not selected";
 
   return (
     <div className="container min-vh-100 d-flex align-items-center justify-content-center bg-light">
@@ -15,7 +24,7 @@ export const FormPage = () => {
           </h1>
           <p className="text-center mb-4 fs-5">
             <span className="badge bg-info text-dark fs-6 py-2 px-3">
-              Selected Date: {selectedDate || "Not selected"}
+              Selected Date: {formattedDate}
             </span>
           </p>
           <form>
@@ -166,6 +175,13 @@ export const FormPage = () => {
             <div className="text-center mt-4">
               <button type="submit" className="btn btn-primary btn-lg px-5 shadow">
                 Submit Booking
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger btn-lg px-5 ms-3"
+                onClick={() => navigate("/ratesanddates")}
+              >
+                Cancel
               </button>
             </div>
           </form>
