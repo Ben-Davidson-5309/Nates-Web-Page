@@ -1,7 +1,6 @@
 // TermsOfService.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './TermsPage.css';
+import { Link } from "react-router-dom";
+import "./TermsPage.css";
 
 const TermsOfService = () => {
   return (
@@ -18,36 +17,45 @@ const TermsOfService = () => {
         {/* 1. Introduction */}
         <article className="mb-5">
           <h2 className="text-success h4 mb-3">1. Our Commitment to You</h2>
-          <p>
-            As a family-owned Spokane business, we promise transparent service 
-            guided by these core principles:
-          </p>
-          <ul>
-            <li>Upfront pricing with no hidden fees</li>
-            <li>Respect for your property and privacy</li>
-            <li>Environmentally responsible disposal</li>
-          </ul>
+          <div className="card mb-3">
+            <div className="card-body">
+              <p>
+                As a family-owned Spokane business, we promise transparent service
+                guided by these core principles:
+              </p>
+              <ul>
+                <li>Upfront pricing with no hidden fees</li>
+                <li>Respect for your property and privacy</li>
+                <li>Environmentally responsible disposal</li>
+              </ul>
+            </div>
+          </div>
         </article>
 
         {/* 2. Service Terms */}
         <article className="mb-5">
           <h2 className="text-success h4 mb-3">2. Service Agreement</h2>
-          <div className="mb-4">
-            <h3 className="h6">2.1 What We Handle</h3>
-            <p>
-              We remove household junk, construction debris, and yard waste. 
-              <strong> Prohibited items:</strong> hazardous materials, 
-              explosives, medical waste.
-            </p>
+          <div className="card mb-3">
+            <div className="card-body">
+              <h3 className="h6">2.1 What We Handle</h3>
+              <p>
+                We remove household junk, construction debris, and yard waste.
+                <strong> Prohibited items:</strong> hazardous materials,
+                explosives, medical waste.
+              </p>
+            </div>
           </div>
-          
           <div className="mb-4">
-            <h3 className="h6">2.2 Pricing & Payment</h3>
-            <ul>
-              <li>Prices guaranteed for 7 days from estimate</li>
-              <li>1.5% discount vs. local competitors verified</li>
-              <li>Commercial contracts require 25% deposit</li>
-            </ul>
+            <div className="card">
+              <div className="card-body py-3 px-3">
+                <h3 className="h6">2.2 Pricing & Payment</h3>
+                <ul className="mb-0">
+                  <li>Prices guaranteed for 7 days from estimate</li>
+                  <li>1.5% discount vs. local competitors verified</li>
+                  <li>Commercial contracts require 25% deposit</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -102,53 +110,81 @@ const TermsOfService = () => {
         </article>
 
         {/* 5. Legal */}
-        <article className="legal-section">
-          <h2 className="text-success h4 mb-3">5. Important Details</h2>
-          <div className="accordion" id="legalAccordion">
-            {/* Cancellation Policy */}
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button" type="button" 
-                  data-bs-toggle="collapse" data-bs-target="#cancellation">
-                  Cancellation Policy
-                </button>
-              </h3>
-              <div id="cancellation" className="accordion-collapse collapse show">
-                <div className="accordion-body">
-                  <ul>
-                    <li>24hr notice for full refund</li>
-                    <li>Same-day cancellation: 50% fee</li>
-                    <li>Weather-related: No charge</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+       // In TermsOfService.jsx - Updated Legal Section
+<article className="legal-section">
+  <h2 className="text-success h4 mb-3">5. Important Details</h2>
+  <div className="accordion" id="legalAccordion">
+    {/* Cancellation Policy */}
+    <div className="accordion-item">
+      <h3 className="accordion-header">
+        <button 
+          className="accordion-button" 
+          type="button"
+          data-bs-toggle="collapse" 
+          data-bs-target="#cancellation"
+          aria-expanded="true"
+          aria-controls="cancellation"
+        >
+          Cancellation Policy
+        </button>
+      </h3>
+      <div 
+        id="cancellation" 
+        className="accordion-collapse collapse show"
+        data-bs-parent="#legalAccordion"
+      >
+        <div className="accordion-body">
+          <ul className="mb-0">
+            <li>24hr notice for full refund</li>
+            <li>Same-day cancellation: 50% fee</li>
+            <li>Weather-related: No charge</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-            {/* Liability */}
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" 
-                  data-bs-toggle="collapse" data-bs-target="#liability">
-                  Liability Protection
-                </button>
-              </h3>
-              <div id="liability" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <p>
-                    We carry $2M general liability insurance. Damage claims must 
-                    be filed within 48 hours via 
-                    <Link to="/contact" className="text-success"> our contact form</Link>.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
+    {/* Liability Protection */}
+    <div className="accordion-item">
+      <h3 className="accordion-header">
+        <button 
+          className="accordion-button collapsed" 
+          type="button"
+          data-bs-toggle="collapse" 
+          data-bs-target="#liability"
+          aria-expanded="false"
+          aria-controls="liability"
+        >
+          Liability Protection
+        </button>
+      </h3>
+      <div 
+        id="liability" 
+        className="accordion-collapse collapse"
+        data-bs-parent="#legalAccordion"
+      >
+        <div className="accordion-body">
+          <ul className="mb-0">
+            <li>
+              We carry $2M general liability insurance.
+            </li>
+            <li>
+              Damage claims must be filed within 48 hours via{' '}
+              <Link to="/contact" className="text-primary">
+                our contact form
+              </Link>.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
 
         <footer className="mt-5 text-center">
           <p className="text-muted small">
-            Questions? Call our Spokane team: 
-            <a href="tel:5095555865" className="text-success"> (509) 555-JUNK</a>
+            Questions? Call our Spokane team:
+            <a href="tel:5095555865" className="text-primary"> (509) 743-5771</a>
           </p>
           <address className="not-italic">
             509 Junk Hauling LLC<br />
@@ -157,6 +193,9 @@ const TermsOfService = () => {
           </address>
         </footer>
       </section>
+
+      {/* Bootstrap JS Bundle (includes Popper) */}
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </div>
   );
 };

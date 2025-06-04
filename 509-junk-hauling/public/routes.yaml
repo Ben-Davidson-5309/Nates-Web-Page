@@ -15,5 +15,5 @@ routes:
     component: "ConfirmationPage"
   - path: "/book-appointment"
     component: "BookAppointment"
-  - path: "/termsofservice"
-    component: "TermsOfService"
+  - path: "/terms"
+    component: "TermsPage"

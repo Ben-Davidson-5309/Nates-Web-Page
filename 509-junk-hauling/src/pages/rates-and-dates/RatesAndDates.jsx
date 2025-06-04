@@ -41,7 +41,7 @@ const RatesAndDates = () => {
     <div className="rates-and-dates container-lg py-5">
       {/* Heading */}
       <h1 className="text-center mb-2 display-2 fw-bold heading-text">
-        Dates and Rates
+        Rates and Dates
       </h1>
       <h5 className="text-center mb-4 display-5 heading-subtext">
         Spokane’s trusted, family-owned junk hauling
@@ -58,24 +58,27 @@ const RatesAndDates = () => {
             />
           </div>
           <div className="col-md-6 mt-4 mt-md-0">
-            <h2 className="text-success">
-              <i className="bi bi-people-fill me-2"></i>
-              Family Values, Professional Service
-            </h2>
-            <p className="lead">
-              As a Spokane-owned business since 1998, we treat every customer like 
-              extended family. You'll always get:
-            </p>
-            <ul className="list-unstyled">
-              <li className="mb-3">
-                <i className="bi bi-shield-check text-success me-2"></i>
-                <strong>Privacy guarantee:</strong> No shared customer databases
-              </li>
-              <li className="mb-3">
-                <i className="bi bi-telephone text-success me-2"></i>
-                <strong>Direct owner contact:</strong> (509) 555-JUNK
-              </li>
-            </ul>
+            <div className="card family-card shadow-sm">
+              <div className="card-body py-3 px-4">
+                <h2 className="text-success h4 mb-3">
+                  <i className="bi bi-people-fill me-2"></i>
+                  Family Values, Professional Service
+                </h2>
+                <p className="lead mb-3">
+                  As a Spokane-owned business since 1998, we treat every customer like extended family. You'll always get:
+                </p>
+                <ul className="list-unstyled mb-0">
+                  <li className="mb-2">
+                    <i className="bi bi-shield-check text-success me-2"></i>
+                    <strong>Privacy guarantee:</strong> No shared customer databases
+                  </li>
+                  <li>
+                    <i className="bi bi-telephone text-success me-2"></i>
+                    <strong>Direct owner contact:</strong> (509) 555-JUNK
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>

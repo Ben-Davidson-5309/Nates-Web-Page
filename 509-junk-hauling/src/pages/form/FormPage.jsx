@@ -246,7 +246,7 @@ export const FormPage = () => {
             <div className="form-check mb-3">
               <input className="form-check-input border-success" type="checkbox" id="terms" required />
               <label className="form-check-label text-success" htmlFor="terms">
-                I agree to the <Link to="/termspage" target="_blank" rel="noopener noreferrer">terms and conditions</Link>.
+                I agree to the <Link to="/terms" target="_blank" rel="noopener noreferrer">terms and conditions</Link>.
               </label>
             </div>
             <div className="text-center mt-4">

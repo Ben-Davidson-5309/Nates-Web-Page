@@ -29,3 +29,16 @@ address {
   border-radius: 8px;
   display: inline-block;
 }
+
+/* Add to TermsOfService.css */
+.card {
+  background-color: #fff !important; /* Force solid white */
+  border: 1px solid #dee2e6 !important; /* Clean border */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important; /* Subtle depth */
+}
+
+.card-body {
+  background: transparent !important; /* Keep inner area transparent */
+  padding: 1.5rem; /* Control spacing */
+}
+
