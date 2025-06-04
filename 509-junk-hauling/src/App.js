@@ -15,6 +15,7 @@ import ConfirmationPage from "./pages/confirmation/ConfirmationPage";
 import FadedBackground from "./components/BackgroundImage/FadedBackground";
 import BookAppointment from "./pages/book-appointment/BookAppointment";
 import TermsPage from "./pages/terms/TermsPage";
+import ClaimFormPage from "./pages/ClaimFormPage/ClaimFormPage";
 
 // Map component names from routes.yaml to actual React components
 const componentMap = {
@@ -27,6 +28,7 @@ const componentMap = {
   ConfirmationPage,
   BookAppointment,
   TermsPage,
+  ClaimFormPage,
 };
 
 const App = () => {

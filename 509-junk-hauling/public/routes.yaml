@@ -17,3 +17,5 @@ routes:
     component: "BookAppointment"
   - path: "/terms"
     component: "TermsPage"
+  - path: "/claimform"
+    component: "ClaimFormPage"

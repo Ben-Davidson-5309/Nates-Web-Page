@@ -13,15 +13,16 @@ const TermsOfService = () => {
         <p className="lead">Last Updated: {new Date().toLocaleDateString()}</p>
       </header>
 
+      {/* 1. Introduction */}
+
       <section className="terms-content">
-        {/* 1. Introduction */}
         <article className="mb-5">
           <h2 className="text-success h4 mb-3">1. Our Commitment to You</h2>
           <div className="card mb-3">
             <div className="card-body">
               <p>
-                As a family-owned Spokane business, we promise transparent service
-                guided by these core principles:
+                As a family-owned Spokane business, we promise transparent
+                service guided by these core principles:
               </p>
               <ul>
                 <li>Upfront pricing with no hidden fees</li>
@@ -33,6 +34,7 @@ const TermsOfService = () => {
         </article>
 
         {/* 2. Service Terms */}
+
         <article className="mb-5">
           <h2 className="text-success h4 mb-3">2. Service Agreement</h2>
           <div className="card mb-3">
@@ -60,11 +62,12 @@ const TermsOfService = () => {
         </article>
 
         {/* 3. Commercial Clients */}
+
         <article className="mb-5">
-          <h2 className="text-success h4 mb-3">3. Construction & Business Services</h2>
-          <p>
-            For our valued commercial partners in Spokane County:
-          </p>
+          <h2 className="text-success h4 mb-3">
+            3. Construction & Business Services
+          </h2>
+          <p>For our valued commercial partners in Spokane County:</p>
           <div className="row">
             <div className="col-md-6">
               <div className="card h-100">
@@ -94,6 +97,7 @@ const TermsOfService = () => {
         </article>
 
         {/* 4. Privacy & Safety */}
+
         <article className="mb-5">
           <h2 className="text-success h4 mb-3">4. Your Peace of Mind</h2>
           <div className="privacy-card bg-light p-4 rounded">
@@ -109,86 +113,90 @@ const TermsOfService = () => {
           </div>
         </article>
 
-        {/* 5. Legal */}
-       // In TermsOfService.jsx - Updated Legal Section
-<article className="legal-section">
-  <h2 className="text-success h4 mb-3">5. Important Details</h2>
-  <div className="accordion" id="legalAccordion">
-    {/* Cancellation Policy */}
-    <div className="accordion-item">
-      <h3 className="accordion-header">
-        <button 
-          className="accordion-button" 
-          type="button"
-          data-bs-toggle="collapse" 
-          data-bs-target="#cancellation"
-          aria-expanded="true"
-          aria-controls="cancellation"
-        >
-          Cancellation Policy
-        </button>
-      </h3>
-      <div 
-        id="cancellation" 
-        className="accordion-collapse collapse show"
-        data-bs-parent="#legalAccordion"
-      >
-        <div className="accordion-body">
-          <ul className="mb-0">
-            <li>24hr notice for full refund</li>
-            <li>Same-day cancellation: 50% fee</li>
-            <li>Weather-related: No charge</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+        {/* 5. Legal In TermsOfService.jsx - Updated Legal Section */}
 
-    {/* Liability Protection */}
-    <div className="accordion-item">
-      <h3 className="accordion-header">
-        <button 
-          className="accordion-button collapsed" 
-          type="button"
-          data-bs-toggle="collapse" 
-          data-bs-target="#liability"
-          aria-expanded="false"
-          aria-controls="liability"
-        >
-          Liability Protection
-        </button>
-      </h3>
-      <div 
-        id="liability" 
-        className="accordion-collapse collapse"
-        data-bs-parent="#legalAccordion"
-      >
-        <div className="accordion-body">
-          <ul className="mb-0">
-            <li>
-              We carry $2M general liability insurance.
-            </li>
-            <li>
-              Damage claims must be filed within 48 hours via{' '}
-              <Link to="/contact" className="text-primary">
-                our contact form
-              </Link>.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
+        <article className="legal-section">
+          <h2 className="text-success h4 mb-3">5. Important Details</h2>
+          <div className="accordion" id="legalAccordion">
+            {/* Cancellation Policy */}
+            <div className="accordion-item">
+              <h3 className="accordion-header">
+                <button
+                  className="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#cancellation"
+                  aria-expanded="true"
+                  aria-controls="cancellation"
+                >
+                  Cancellation Policy
+                </button>
+              </h3>
+              <div
+                id="cancellation"
+                className="accordion-collapse collapse show"
+                data-bs-parent="#legalAccordion"
+              >
+                <div className="accordion-body">
+                  <ul className="mb-0">
+                    <li>24hr notice for full refund</li>
+                    <li>Same-day cancellation: 50% fee</li>
+                    <li>Weather-related: No charge</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
+            {/* Liability Protection */}
+
+            <div className="accordion-item">
+              <h3 className="accordion-header">
+                <button
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#liability"
+                  aria-expanded="false"
+                  aria-controls="liability"
+                >
+                  Liability Protection
+                </button>
+              </h3>
+              <div
+                id="liability"
+                className="accordion-collapse collapse"
+                data-bs-parent="#legalAccordion"
+              >
+                <div className="accordion-body">
+                  <ul className="mb-0">
+                    <li>We carry $2M general liability insurance.</li>
+                    <li>
+                      Damage claims must be filed within 48 hours via{" "}
+                      <Link to="/claimform" className="text-primary">
+                        our contact form
+                      </Link>
+                      .
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
 
         <footer className="mt-5 text-center">
           <p className="text-muted small">
             Questions? Call our Spokane team:
-            <a href="tel:5095555865" className="text-primary"> (509) 743-5771</a>
+            <a href="tel:5095555865" className="text-primary">
+              {" "}
+              (509) 743-5771
+            </a>
           </p>
           <address className="not-italic">
-            509 Junk Hauling LLC<br />
-            [Your Spokane Address]<br />
+            509 Junk Hauling LLC
+            <br />
+            [Your Spokane Address]
+            <br />
             License #: [WA License Number]
           </address>
         </footer>
