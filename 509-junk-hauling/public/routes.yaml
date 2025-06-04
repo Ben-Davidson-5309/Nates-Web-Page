@@ -13,3 +13,7 @@ routes:
     component: "FormPage"
   - path: "/confirmation"
     component: "ConfirmationPage"
+  - path: "/book-appointment"
+    component: "BookAppointment"
+  - path: "/termsofservice"
+    component: "TermsOfService"

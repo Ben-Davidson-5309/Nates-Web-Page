@@ -1,160 +1,206 @@
-// RatesAndDates.jsx
 import React, { useState } from 'react'
-import Calendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css'
-import './RatesAndDates.css'
 import { useNavigate } from 'react-router-dom'
+import './RatesAndDates.css'
+
+const PRICING = {
+  residential: {
+    truckload: 443,
+    appliance: 84,
+    yardWaste: 295
+  },
+  commercial: {
+    weeklyContract: 985,
+    dumpsterRental: 1200
+  }
+}
+
+const COMMERCIAL_SERVICES = [
+  {
+    title: "Construction Site Contracts",
+    benefits: [
+      "Daily debris removal schedules",
+      "OSHA-compliant disposal",
+      "Certified recycling reports"
+    ]
+  },
+  {
+    title: "Property Management Solutions",
+    benefits: [
+      "Turnover cleanouts <24hr response",
+      "Emergency storm debris removal",
+      "Tenant move-out specials"
+    ]
+  }
+]
 
 const RatesAndDates = () => {
-  const monthNames = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ]
-  const currentYear = new Date().getFullYear()
-  const years = Array.from({ length: 11 }, (_, i) => currentYear + i)
-
-  const [activeDate, setActiveDate] = useState(new Date())
-  const [selectedDate, setSelectedDate] = useState(null)
-  const [showModal, setShowModal] = useState(false)
-  const [name, setName] = useState("")
   const navigate = useNavigate()
-
-  const reservedDates = ['2025-06-15', '2025-06-20', '2025-07-04'] // Sample reserved dates
-
-  const handleMonthChange = (e) => {
-    const newMonth = parseInt(e.target.value, 10)
-    const next = new Date(activeDate)
-    next.setMonth(newMonth)
-    setActiveDate(next)
-  }
-
-  const handleYearChange = (e) => {
-    const newYear = parseInt(e.target.value, 10)
-    const next = new Date(activeDate)
-    next.setFullYear(newYear)
-    setActiveDate(next)
-  }
-
-  const onActiveStartDateChange = ({ activeStartDate }) => {
-    setActiveDate(activeStartDate)
-  }
-
-  const onSelectDate = (date) => {
-    setSelectedDate(date)
-    setActiveDate(date)
-    setShowModal(true)
-  }
-
-  const handleConfirm = () => {
-    const dateStr = selectedDate ? selectedDate.toISOString().split('T')[0] : ''
-    navigate(`/form?date=${dateStr}&name=${encodeURIComponent(name)}`)
-  }
+  const [showCommercial, setShowCommercial] = useState(false)
 
   return (
-    <div className="rates-and-dates">
+    <div className="rates-and-dates container-lg py-5">
+      {/* Heading */}
       <h1 className="text-center mb-2 display-2 fw-bold heading-text">
         Dates and Rates
       </h1>
       <h5 className="text-center mb-4 display-5 heading-subtext">
-        Please select a date to reserve
+        Spokane’s trusted, family-owned junk hauling
       </h5>
 
-      <div className="calendar-caption">
-        {activeDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
-      </div>
-
-      <div className="calendar-controls">
-        <label>
-          Month:
-          <select value={activeDate.getMonth()} onChange={handleMonthChange}>
-            {monthNames.map((m, i) => (
-              <option key={i} value={i}>{m}</option>
-            ))}
-          </select>
-        </label>
-
-        <label>
-          Year:
-          <select value={activeDate.getFullYear()} onChange={handleYearChange}>
-            {years.map((y) => (
-              <option key={y} value={y}>{y}</option>
-            ))}
-          </select>
-        </label>
-      </div>
-
-      <div className="calendar-component">
-        <Calendar
-          locale="en-US"
-          onChange={onSelectDate}
-          value={selectedDate}
-          activeStartDate={activeDate}
-          onActiveStartDateChange={onActiveStartDateChange}
-          tileClassName={({ date }) => {
-            const iso = date.toISOString().split('T')[0]
-            if (reservedDates.includes(iso)) return 'reserved-date'
-          }}
-        />
-      </div>
-
-      {/* Modal */}
-      {showModal && (
-        <div className="modal-backdrop">
-          <div className="custom-modal-content">
-            <div className="modal-header">
-              <h4 className="modal-title">Reserve a Date</h4>
-              <button
-                className="close-btn"
-                onClick={() => setShowModal(false)}
-                aria-label="Close"
-              >
-                &times;
-              </button>
-            </div>
-            <form onSubmit={e => {
-              e.preventDefault()
-              handleConfirm()
-            }}>
-              <div className="mb-3 text-start">
-                <label className="form-label fw-bold">Name</label>
-                <input
-                  type="text"
-                  placeholder="Enter your name"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  className="form-control"
-                  required
-                />
-              </div>
-              <div className="mb-3 text-start">
-                <label className="form-label fw-bold">Selected Date</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={selectedDate ? selectedDate.toLocaleDateString() : ""}
-                  readOnly
-                />
-              </div>
-              <div className="d-flex justify-content-end gap-2">
-                <button
-                  type="button"
-                  className="btn btn-secondary modal-btn"
-                  onClick={() => setShowModal(false)}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="btn btn-success modal-btn"
-                  disabled={!name}
-                >
-                  Confirm & Continue
-                </button>
-              </div>
-            </form>
+      {/* Family-Owned Section */}
+      <section className="family-section mb-5">
+        <div className="row align-items-center">
+          <div className="col-md-6">
+            <img 
+              src="/assets/family-team.jpg" 
+              alt="Smith family - 3 generations serving Spokane" 
+              className="img-fluid rounded-3"
+            />
+          </div>
+          <div className="col-md-6 mt-4 mt-md-0">
+            <h2 className="text-success">
+              <i className="bi bi-people-fill me-2"></i>
+              Family Values, Professional Service
+            </h2>
+            <p className="lead">
+              As a Spokane-owned business since 1998, we treat every customer like 
+              extended family. You'll always get:
+            </p>
+            <ul className="list-unstyled">
+              <li className="mb-3">
+                <i className="bi bi-shield-check text-success me-2"></i>
+                <strong>Privacy guarantee:</strong> No shared customer databases
+              </li>
+              <li className="mb-3">
+                <i className="bi bi-telephone text-success me-2"></i>
+                <strong>Direct owner contact:</strong> (509) 555-JUNK
+              </li>
+            </ul>
           </div>
         </div>
-      )}
+      </section>
+
+      {/* Pricing Section */}
+      <section className="pricing-section mb-5">
+        <h2 className="text-center mb-4 display-4 fw-bold text-success">
+          Transparent Pricing
+        </h2>
+        {/* Residential Pricing */}
+        <div className="card mb-4 shadow">
+          <div className="card-body">
+            <h3 className="card-title">
+              <i className="bi bi-house-door me-2"></i>
+              Residential Services
+            </h3>
+            <div className="row">
+              <div className="col-md-4">
+                <div className="price-card">
+                  <h4>Full Truckload</h4>
+                  <div className="price-display">
+                    <span className="text-muted text-decoration-line-through">$450</span>
+                    <span className="h2 text-success">${PRICING.residential.truckload}</span>
+                  </div>
+                  <small>Up to 2 tons - construction debris</small>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="price-card">
+                  <h4>Appliance Removal</h4>
+                  <div className="price-display">
+                    <span className="text-muted text-decoration-line-through">$85</span>
+                    <span className="h2 text-success">${PRICING.residential.appliance}</span>
+                  </div>
+                  <small>Per item - fridge, washer, etc.</small>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="price-card">
+                  <h4>Yard Waste</h4>
+                  <div className="price-display">
+                    <span className="text-muted text-decoration-line-through">$300</span>
+                    <span className="h2 text-success">${PRICING.residential.yardWaste}</span>
+                  </div>
+                  <small>Brush, branches, leaves</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Commercial Pricing Toggle */}
+        <div className="text-center mb-4">
+          <button 
+            className="btn btn-outline-success"
+            onClick={() => setShowCommercial(!showCommercial)}
+          >
+            {showCommercial ? 'Hide' : 'Show'} Commercial Rates
+          </button>
+        </div>
+
+        {/* Commercial Pricing */}
+        {showCommercial && (
+          <div className="card mb-4 shadow">
+            <div className="card-body">
+              <h3 className="card-title">
+                <i className="bi bi-building me-2"></i>
+                Commercial Services
+              </h3>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="price-card">
+                    <h4>Weekly Contract</h4>
+                    <div className="price-display">
+                      <span className="h2 text-success">${PRICING.commercial.weeklyContract}</span>
+                    </div>
+                    <small>Bulk construction site rate</small>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="price-card">
+                    <h4>Dumpster Rental</h4>
+                    <div className="price-display">
+                      <span className="h2 text-success">${PRICING.commercial.dumpsterRental}</span>
+                    </div>
+                    <small>20yd + 1.5% discount</small>
+                  </div>
+                </div>
+              </div>
+              <div className="row mt-4">
+                {COMMERCIAL_SERVICES.map((service, index) => (
+                  <div className="col-md-6 mb-4" key={index}>
+                    <div className="service-card p-3">
+                      <h5>{service.title}</h5>
+                      <ul className="list-unstyled">
+                        {service.benefits.map((benefit, i) => (
+                          <li key={i} className="mb-2">
+                            <i className="bi bi-check2-circle text-success me-2"></i>
+                            {benefit}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+
+      {/* Booking CTA */}
+      <section className="booking-cta text-center py-5 bg-light rounded-3">
+        <h2 className="mb-4">Ready to Clear Your Space?</h2>
+        <button 
+          className="btn btn-success btn-lg px-5"
+          onClick={() => navigate('/book-appointment')}
+        >
+          <i className="bi bi-calendar-check me-2"></i>
+          Schedule Free Estimate
+        </button>
+        <p className="text-muted mt-3 small">
+          No credit card required - 100% Spokane-based team
+        </p>
+      </section>
     </div>
   )
 }

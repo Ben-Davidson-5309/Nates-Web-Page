@@ -1,14 +1,6 @@
 import React from "react";
 import HomeCard from "../../components/HomeCard/HomeCard";
 
-const routes = [
-  { path: "/", component: "HomePage" },
-  { path: "/ratesanddates", component: "RatesAndDates" },
-  { path: "/rentatrailer", component: "RentATrailer" },
-  { path: "/about", component: "AboutPage" },
-  { path: "/contact", component: "ContactPage" },
-];
-
 const HomePage = () => {
   return (
     <div className="container mt-5">
