@@ -13,6 +13,7 @@ services:
       - FAST_REFRESH=false # Disable Fast Refresh
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
+      - REACT_APP_FORMSPREE_ID=mrbkbkpb
     stdin_open: true
     tty: true
     command: npm start
