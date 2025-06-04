@@ -7,12 +7,17 @@ const connectDB = require('./src/config/db'); // Import your DB connection
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const bookingRoutes = require("./src/routes/bookingRoutes");
+
+
 // Connect to MongoDB Atlas
 connectDB();
 
 // Middleware to parse JSON and urlencoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use("/", bookingRoutes)
 
 // Set EJS as the templating engine
 app.set("view engine", "ejs");
