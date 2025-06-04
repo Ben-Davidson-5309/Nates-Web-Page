@@ -1,0 +1,3 @@
+import "ClaimFormPage" from "./ClaimFormPage";
+
+export default "ClaimFormPage";
